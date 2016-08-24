@@ -9,6 +9,13 @@ var lossword= "losses: ";
 var randomNumber = Math.floor((Math.random() * 100) - 1);
 var randomNumberTarget = $("#randomNumber");
 randomNumberTarget.html(randomNumber);
+// make a function to reapeat the loop and call thet function when need
+function resetGame(){
+  randomNumber = Math.floor((Math.random() * 100) - 1);
+  randomNumberTarget.html(randomNumber);
+  counter = 0;
+  $("#score").text(score + counter);
+}
 
 $(document).ready(function(){
 
@@ -33,10 +40,14 @@ $(document).ready(function(){
       win+=1;
       // alert('you\'ve won!');
       $("#win").html(winword + win);
+      alert("you won!!");
+      resetGame();
     } else if (counter > randomNumber){
       loss+=1;
       // alert('you\'ve lost!');
       $("#loss").html(lossword + loss);
+      alert("You lost!!");
+      resetGame();
     }
   });
 
