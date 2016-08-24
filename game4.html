@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>simple crystal game</title>
+  <style type="text/css">
+  	/*
+  		we threw in some styling to make the picture fit on the page better
+	*/
+	/* .img is a class name we give to the image*/
+    .img {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- we added this image -->
+<p><span id="number"></span></p>
+<p><span id="name"></span></p>
+<p><span id="win"></span></p>
+<p><span id="loss"></span></p>
+
+<div id="img1">
+
+  <!-- <img src="http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg" alt="crystals" class="img"> -->
+</div>
+
+<!-- we added jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">
+  $( document ).ready(function() {
+  	var numberToGuess = 40;
+  	var counter= 0;
+  	var numbers=[20, 10, 1, 8];
+  	// ("#id" we define as a span)(this thing display the number)
+   $("#number").text(numberToGuess);
+   for(i=0; i<numbers.length; i++){
+   	// give every image an single value
+   	 var imageCrystal = $('<img>');
+
+   	 imageCrystal.attr('data-num', numbers[i]);
+   	 imageCrystal.attr('src', 'http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg');
+   	  imageCrystal.attr('alt', 'crystals');
+   	   imageCrystal.addClass('img');
+   	   // for every single value add an image
+   	   $('#img1').append(imageCrystal);
+   }
+  	// (". class name")
+    $('.img').on('click', function(){
+
+    	counter = counter + parseInt($(this).data('num'));;
+    	// ("#" name of the id where you want to display the number)
+    	$("#name").text(counter);
+    	var win = 0;
+    	var loss = 0;
+     if(counter == numberToGuess){
+     	win++;
+     	$("#win").text(win);
+     	// console.log('ok');
+     }else if(counter > numberToGuess){
+     	loss++;
+     	$("#loss").text(loss);
+     }
+
+     
+
+      
+    });
+  });
+</script>
+</body>
+</html>
